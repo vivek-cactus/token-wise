@@ -1,11 +1,11 @@
 {
   "name": "token-wise",
   "description": "Routes text-heavy tasks (planning, CLAUDE.md, PRD, README) to leaner Claude models to save tokens without sacrificing quality.",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "author": {
     "name": "Vidhilekha Lab LLP"
   },
-  "homepage": "https://github.com/vidhilekha-lab/token-wise",
-  "repository": "https://github.com/vidhilekha-lab/token-wise",
+  "homepage": "https://github.com/vivek-cactus/token-wise",
+  "repository": "https://github.com/vivek-cactus/token-wise",
   "keywords": ["token-saving", "model-routing", "planning", "claude-md", "productivity"]
 }
