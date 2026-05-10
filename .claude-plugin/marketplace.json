@@ -1,0 +1,28 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "token-wise",
+  "description": "Routes text-heavy tasks (planning, CLAUDE.md, PRD, README) to leaner Claude models to save tokens without sacrificing quality.",
+  "owner": {
+    "name": "Vivek Saurabh",
+    "email": "saurabh.vivek75@gmail.com"
+  },
+  "plugins": [
+    {
+      "name": "token-wise",
+      "description": "Routes text-heavy tasks (planning, CLAUDE.md, PRD, README) to leaner Claude models to save tokens without sacrificing quality.",
+      "category": "productivity",
+      "version": "0.1.0",
+      "homepage": "https://github.com/vivek-cactus/token-wise",
+      "tags": ["token-saving", "model-routing", "planning", "claude-md", "productivity"],
+      "author": {
+        "name": "Vivek Saurabh"
+      },
+      "source": {
+        "source": "github",
+        "repo": "vivek-cactus/token-wise",
+        "commit": "2c0116d5a6a0426bd5db7907c01070dd1ff63f20",
+        "sha": "2c0116d5a6a0426bd5db7907c01070dd1ff63f20"
+      }
+    }
+  ]
+}
