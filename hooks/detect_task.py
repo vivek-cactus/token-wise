@@ -48,15 +48,32 @@ TASK_PATTERNS = {
 SKILL_LABELS = {
     "claude-md": "CLAUDE.md generation",
     "plan":      "project planning",
-    "readme":    "README generation",
+    "readme":    "README update",
     "prd":       "PRD / spec writing",
 }
 
-MODEL_OPTIONS = [
-    ("haiku",  "fastest & cheapest"),
-    ("sonnet", "balanced"),
-    ("opus",   "most powerful"),
-]
+MODEL_DESCRIPTIONS = {
+    "claude-md": {
+        "haiku":  "Fastest and most cost-efficient. Good for straightforward CLAUDE.md updates.",
+        "sonnet": "Balanced quality and speed. Recommended for most CLAUDE.md tasks.",
+        "opus":   "Highest quality and deepest reasoning. Best for complex or comprehensive CLAUDE.md generation.",
+    },
+    "plan": {
+        "haiku":  "Fastest and most cost-efficient. Good for simple, well-defined plans.",
+        "sonnet": "Balanced quality and speed. Recommended for most planning tasks.",
+        "opus":   "Highest quality and deepest reasoning. Best for complex architectural plans.",
+    },
+    "readme": {
+        "haiku":  "Fastest and most cost-efficient. Good for simple, well-defined README updates.",
+        "sonnet": "Balanced quality and speed. Recommended for most README tasks.",
+        "opus":   "Highest quality and deepest reasoning. Best for complex or comprehensive README rewrites.",
+    },
+    "prd": {
+        "haiku":  "Fastest and most cost-efficient. Good for simple, well-defined specs.",
+        "sonnet": "Balanced quality and speed. Recommended for most PRD tasks.",
+        "opus":   "Highest quality and deepest reasoning. Best for complex product requirements.",
+    },
+}
 
 
 def detect_task(prompt: str) -> str | None:
@@ -66,11 +83,6 @@ def detect_task(prompt: str) -> str | None:
             if re.search(pattern, prompt_lower):
                 return skill
     return None
-
-
-def format_options(skill: str) -> str:
-    lines = [f"  /token-wise:{skill}-{model}    ← {label}" for model, label in MODEL_OPTIONS]
-    return "\n".join(lines)
 
 
 def main():
@@ -93,14 +105,31 @@ def main():
         sys.exit(0)
 
     label = SKILL_LABELS[task]
-    stop_message = (
-        f"[token-wise] {label} detected.\n\n"
-        f"Ask the user: \"token-wise: which model should handle this {label}?\"\n"
-        f"Use \"token-wise\" as the label. Options:\n\n"
-        f"{format_options(task)}\n"
-    )
+    descs = MODEL_DESCRIPTIONS[task]
 
-    print(json.dumps({"stopReason": stop_message}))
+    ask_params = {
+        "questions": [{
+            "question": f"token-wise: which model should handle this {label}?",
+            "header": "token-wise",
+            "multiSelect": False,
+            "options": [
+                {"label": "Haiku",  "description": descs["haiku"]},
+                {"label": "Sonnet", "description": descs["sonnet"]},
+                {"label": "Opus",   "description": descs["opus"]},
+            ]
+        }]
+    }
+
+    # Plain text stdout is added to Claude's context as hook output (per docs).
+    # JSON {"additionalContext": ...} is not reliably received by Claude.
+    print(
+        f"[token-wise] {label} detected. Do NOT directly process this request.\n"
+        f"Do NOT apply using-superpowers, brainstorming, or any other skill.\n"
+        f"Do NOT generate your own AskUserQuestion parameters.\n\n"
+        f"Your ONLY action: call AskUserQuestion with this exact JSON (copy verbatim):\n\n"
+        f"{json.dumps(ask_params, indent=2)}\n\n"
+        f"After the user selects, invoke /token-wise:{task}-<chosen_model_in_lowercase>"
+    )
     sys.exit(0)
 
 

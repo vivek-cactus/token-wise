@@ -51,6 +51,16 @@ The first time you run any token-wise skill, you'll see a permission approval pr
 
 ## Install
 
+### From the Claude Code Marketplace
+
+The easiest way to install token-wise:
+
+```bash
+# Search and install from the Claude Code marketplace
+```
+
+In Claude Code, open the Marketplace (Plugins menu) and search for **token-wise**.
+
 ### Local development
 
 ```bash
@@ -101,4 +111,4 @@ Contributions welcome. Fork, branch, and open a PR. Skills are defined in `skill
 
 ## License
 
-MIT — see [LICENSE](./LICENSE)
+Apache 2.0 — see [LICENSE](./LICENSE)
