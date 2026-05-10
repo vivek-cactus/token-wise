@@ -1,0 +1,11 @@
+{
+  "_comment": "token-wise default model preferences per skill. Users can override per-session by passing haiku|sonnet|opus as argument.",
+  "tokenWise": {
+    "defaultModels": {
+      "claude-md": "claude-sonnet-4-5",
+      "plan":      "claude-sonnet-4-5",
+      "readme":    "claude-haiku-4-5-20251001",
+      "prd":       "claude-sonnet-4-5"
+    }
+  }
+}
