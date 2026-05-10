@@ -1,7 +1,7 @@
 {
   "name": "token-wise",
   "description": "Routes text-heavy tasks (planning, CLAUDE.md, PRD, README) to leaner Claude models to save tokens without sacrificing quality.",
-  "version": "0.1.0",
+  "license": "MIT",
   "author": {
     "name": "Vidhilekha Lab LLP"
   },

@@ -11,7 +11,7 @@
       "name": "token-wise",
       "description": "Routes text-heavy tasks (planning, CLAUDE.md, PRD, README) to leaner Claude models to save tokens without sacrificing quality.",
       "category": "productivity",
-      "version": "0.1.0",
+      "license": "MIT",
       "homepage": "https://github.com/vivek-cactus/token-wise",
       "tags": ["token-saving", "model-routing", "planning", "claude-md", "productivity"],
       "author": {
@@ -20,8 +20,7 @@
       "source": {
         "source": "github",
         "repo": "vivek-cactus/token-wise",
-        "commit": "2c0116d5a6a0426bd5db7907c01070dd1ff63f20",
-        "sha": "2c0116d5a6a0426bd5db7907c01070dd1ff63f20"
+        "ref": "v0.2.0"
       }
     }
   ]
